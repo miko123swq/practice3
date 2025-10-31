@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "RTX 3080",
+    "description": "Мощная видеокарта",
+    "price": 85000,
+    "image": "img/rtx3080.jpg"
+  }
+]

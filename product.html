@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Видеокарта RTX 3080 — PCZone</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg-dark: #1E1E2E;
+      --text: #E6EEF8;
+      --muted: #99A0B3;
+      --primary: #3B82F6;
+      --accent: #22C55E;
+      --highlight: #ff00ff;
+      --radius: 12px;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui;
+      background:var(--bg-dark);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0d0d0d;
+      padding: 15px 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo h1 { color: #00ffea; font-size: 28px; text-shadow:0 0 10px #00ffea; margin:0; }
+    .nav-menu ul { display:flex; gap:30px; list-style:none; margin:0; padding:0;}
+    .nav-menu ul li a{
+      color:#fff;
+      text-decoration:none;
+      padding:6px 12px;
+      border-radius:5px;
+      transition:0.3s;
+    }
+    .nav-menu ul li a:hover{
+      background:var(--highlight);
+      color:#0d0d0d;
+      box-shadow:0 0 10px var(--highlight);
+    }
+
+    .product-container{
+      display:flex;
+      flex-wrap:wrap;
+      gap:40px;
+      max-width:1000px;
+      margin:40px auto;
+      padding:0 20px;
+      justify-content:center;
+    }
+
+    .product-image{
+      flex:1;
+      min-width:300px;
+      text-align:center;
+    }
+    .product-image img{
+      width:100%;
+      max-width:420px;
+      border-radius:var(--radius);
+      box-shadow:0 0 20px rgba(0,255,234,0.3);
+    }
+
+    .product-info{
+      flex:1;
+      min-width:300px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .product-info h2{
+      font-size:28px;
+      margin-bottom:15px;
+      color:#00ffea;
+      text-shadow:0 0 8px #00ffea;
+    }
+    .product-info p.description{
+      font-size:16px;
+      color:var(--muted);
+      margin-bottom:20px;
+      line-height:1.5;
+    }
+    .product-info p.price{
+      font-size:22px;
+      color:#ff00ff;
+      margin-bottom:20px;
+    }
+
+    .product-info button{
+      background: linear-gradient(90deg,#ff00ff,#3b82f6,#22c55e);
+      background-size:200% 200%;
+      color:#fff;
+      font-size:16px;
+      border:none;
+      border-radius:10px;
+      padding:12px 20px;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 0 15px rgba(255,0,255,0.3);
+      animation: hueShift 6s ease infinite;
+    }
+    .product-info button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 25px rgba(255,0,255,0.5);
+    }
+
+    @keyframes hueShift{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    /* === FOOTER === */
+    .site-footer{
+      text-align:center;
+      padding:20px 0;
+      background:#0d0d0d;
+      color:var(--muted);
+      font-size:14px;
+      box-shadow:0 -2px 8px rgba(0,0,0,0.5);
+      margin-top:auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="logo"><h1><a href="header.html" style="color:#00ffea; text-decoration:none;">PCZone</a></h1></div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="header.html">Каталог</a></li>
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+        <li><a href="auth.html">Войти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="product-container">
+    <div class="product-image">
+      <img src="img/rtx3080.jpg" alt="Видеокарта RTX 3080" />
+    </div>
+    <div class="product-info">
+      <h2>Видеокарта RTX 3080</h2>
+      <p class="description">
+        Мощная видеокарта для игр и 3D-моделирования. 10 ГБ памяти GDDR6X, поддержка трассировки лучей, высокая производительность в современных играх.
+      </p>
+      <p class="price">85 000 ₽</p>
+      <button id="addToCart">Добавить в корзину</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Практическая работа 1 — Иващенко | Магазин ПК-комплектующих
+  </footer>
+
+  <!-- подключаем основной JS-модуль -->
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

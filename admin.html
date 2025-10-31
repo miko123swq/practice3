@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin — PCZone</title>
+  <style>
+    body{font-family:Arial, sans-serif;background:#111;color:#eee;padding:20px}
+    h1{color:#00ffea}
+    table{width:100%;border-collapse:collapse;margin-bottom:18px}
+    table td,table th{border:1px solid #222;padding:8px}
+    input,button,textarea{padding:8px;margin:6px 0}
+    img{max-width:120px}
+    .col{display:flex;gap:24px}
+    .panel{background:#0d0d0d;padding:14px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <div class="col">
+    <div class="panel" style="flex:1">
+      <h2>Products</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Price</th><th>Image</th><th>Actions</th></tr></thead>
+        <tbody id="productsTable"></tbody>
+      </table>
+
+      <form id="productForm">
+        <h3>Create / Edit Product</h3>
+        <input name="name" placeholder="Name" required /> <br />
+        <input name="price" placeholder="Price" type="number" required /> <br />
+        <textarea name="description" placeholder="Description"></textarea><br />
+        <div>
+          <label for="imageFile">Выбрать изображение</label>
+          <input id="imageFile" name="imageFile" type="file" accept="image/*" />
+        </div>
+        <div><img id="currentImage" src="" alt=""/></div>
+        <button type="submit">Сохранить товар</button>
+      </form>
+    </div>
+
+    <div class="panel" style="width:360px">
+      <h2>Users</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Login</th><th>Name</th><th>Actions</th></tr></thead>
+        <tbody id="usersTable"></tbody>
+      </table>
+
+      <form id="userForm">
+        <input name="login" placeholder="Login" required /><br />
+        <input name="password" placeholder="Password" type="password" required /><br />
+        <input name="name" placeholder="Name" /><br />
+        <button type="submit">Создать пользователя</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

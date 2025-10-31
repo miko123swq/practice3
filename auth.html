@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PCZone — Вход Магазин ПК-комплектующих</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-dark: #1E1E2E;
+      --card-bg: rgba(255,255,255,0.02);
+      --text: #E6EEF8;
+      --muted: #99A0B3;
+      --primary: #3B82F6;
+      --accent: #22C55E;
+      --glow-primary: rgba(59,130,246,0.16);
+      --glow-accent: rgba(34,197,94,0.10);
+      --radius: 12px;
+      --card-width: 520px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:
+        radial-gradient(800px 400px at 10% 20%, rgba(59,130,246,0.06), transparent),
+        radial-gradient(600px 300px at 90% 90%, rgba(34,197,94,0.03), transparent),
+        var(--bg-dark);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    .page-bg{
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:
+        radial-gradient(circle at 8% 10%, rgba(59,130,246,0.06) 0 2px, transparent 3px),
+        radial-gradient(circle at 88% 90%, rgba(34,197,94,0.04) 0 3px, transparent 4px);
+      filter:blur(6px) saturate(110%);
+      opacity:0.95;
+    }
+
+    .container{
+      position:relative;z-index:10;width:100%;max-width:1000px;
+      display:flex;gap:28px;align-items:center;justify-content:center;
+    }
+
+    .auth-card{
+      width:100%;max-width:var(--card-width);
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+      border-radius:var(--radius);padding:28px;
+      box-shadow:0 8px 28px rgba(2,6,23,0.6),0 0 42px var(--glow-primary);
+      border:1px solid rgba(255,255,255,0.04);
+      backdrop-filter:blur(6px);
+    }
+
+    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--text);font-weight:700;margin-bottom:12px;}
+    .brand svg{color:var(--primary)}
+    .brand span{font-size:18px}
+
+    h1{margin:0 0 6px;font-size:20px}
+    .lead{margin:0 0 16px;color:var(--muted);font-size:13px}
+
+    label{display:block;margin:10px 0 6px;font-size:13px;color:var(--muted)}
+    .input{
+      width:100%;padding:12px 14px;border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0));
+      color:var(--text);outline:none;
+      transition:box-shadow .16s ease,transform .12s ease,border-color .12s;
+      font-size:14px;
+    }
+    .input::placeholder{color:rgba(230,238,248,0.34)}
+    .input:focus{
+      box-shadow:0 0 20px var(--glow-primary);
+      border-color:rgba(59,130,246,0.95);
+      transform:translateY(-1px);
+    }
+
+    .password-row{display:flex;gap:8px;align-items:center}
+    .password-row .input{flex:1}
+    .pwd-toggle{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:44px;height:44px;border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;color:var(--text);
+      cursor:pointer;transition:transform .12s ease,box-shadow .12s;
+    }
+
+    .row.between{display:flex;justify-content:space-between;margin-top:10px;align-items:center}
+    .checkbox{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}
+    .checkbox input{width:16px;height:16px}
+    .link{color:var(--primary);text-decoration:none;font-size:13px}
+
+    .actions{display:flex;gap:12px;align-items:center;margin-top:18px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 18px;border-radius:12px;font-weight:600;cursor:pointer;
+      border:none;text-decoration:none;
+    }
+    .btn-primary{
+      color:white;background:linear-gradient(90deg,var(--primary),#a78bfa,var(--accent));
+      background-size:200% 200%;min-width:120px;height:44px;border-radius:12px;font-size:15px;
+      box-shadow:0 8px 36px rgba(59,130,246,0.12),0 0 18px rgba(34,197,94,0.06);
+      transition:transform .16s cubic-bezier(.22,.9,.2,1),box-shadow .18s;
+      animation:hueShift 6s ease infinite;
+    }
+    @keyframes hueShift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .btn-primary:hover{transform:translateY(-4px);box-shadow:0 12px 48px rgba(59,130,246,0.18)}
+
+    .btn-ghost{
+      background:transparent;color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+      height:44px;padding:10px 14px;border-radius:12px;font-weight:600;
+    }
+
+    .note{margin-top:14px;color:var(--muted);font-size:13px}
+    .small-pill{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);margin-left:6px;font-size:12px}
+
+    .error{color:#FFB4B4;margin-top:12px;min-height:22px;font-size:13px}
+    .footer{margin-top:16px;color:var(--muted);font-size:13px;text-align:center}
+  </style>
+</head>
+
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <main class="container">
+    <section class="auth-card" aria-labelledby="auth-title">
+      <a class="brand" href="index.html">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.2" />
+          <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span>PCZone</span>
+      </a>
+
+      <h1 id="auth-title">Вход в личный кабинет</h1>
+      <p class="lead">Войдите в аккаунт, чтобы просматривать корзину, сохранять сборки и оформлять заказы.</p>
+
+      <form id="loginForm" novalidate>
+        <label for="username">Логин</label>
+        <input id="username" name="username" class="input" type="text" placeholder="Ваш логин" autocomplete="username" required />
+
+        <label for="password">Пароль</label>
+        <div class="password-row">
+          <input id="password" name="password" class="input" type="password" placeholder="Ваш пароль" autocomplete="current-password" required />
+          <button type="button" id="togglePwd" class="pwd-toggle" title="Показать пароль">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="row between">
+          <label class="checkbox">
+            <input type="checkbox" name="remember" />
+            <span>Запомнить меня</span>
+          </label>
+          <a class="link" href="#">Забыли пароль?</a>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="submitBtn" class="btn btn-primary">Войти</button>
+          <a class="btn btn-ghost" href="register.html">Регистрация</a>
+        </div>
+
+        <p class="note">Или войдите через: 
+          <span class="small-pill">Steam</span> 
+          <span class="small-pill">VK</span>
+        </p>
+        <div id="error" class="error" role="alert"></div>
+      </form>
+
+      <div class="footer">
+        Практическая работа 1 — Иващенко | Магазин ПК-комплектующих
+      </div>
+    </section>
+  </main>
+
+  <!-- Подключаем реальную JS-логику -->
+  <script type="module" src="/js/auth.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
